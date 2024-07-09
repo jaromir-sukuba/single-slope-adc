@@ -20,6 +20,9 @@ Instead of using JFET switches and related level switching, I went with DG411 sw
 Comparator is good old LM311, in very basic configuration.
 Brainbox of the whole setup is [PIC18F04Q41](https://www.microchip.com/en-us/product/pic18f04q41) and its 86 lines of C code (see /firmware) setup to measure all three values and emit it out through serial port immediately. In its current configuration it produces 31 samples per second.
 
+Hand-drawn schematics follows:
+![enter image description here](https://github.com/jaromir-sukuba/single-slope-adc/blob/main/schematics/schem.jpg)
+
 ## Results
 Noise is as unimpressive as expected. NSD chart follows:
 ![NSD](https://github.com/jaromir-sukuba/single-slope-adc/blob/main/media/NSD_chart.png)As well as chart of 1000 values at 10V range:
