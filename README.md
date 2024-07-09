@@ -11,14 +11,18 @@ This approach was chosen by Jim Williams in his [AN-260](https://github.com/jaro
 ## My implementation
 
 Unlike Jim, I had the benefit of 40 years of semiconductor improvements in hand, newer components to choose from, so I went with somehow simpler implementation, but kept the basic principle the same overall.
+
+All the components are seated on a PCB similar to [this](https://github.com/macaba/TheManhattanToolkit) manhattan-style PCB set.
 ![PCB](https://github.com/jaromir-sukuba/single-slope-adc/blob/main/media/board.jpg)
 
 Instead of using JFET switches and related level switching, I went with DG411 switches. Input amplifier, integrator and slope amplifier contains OPA145 opamps. Somehow overkill for this application, but I tried to go with good opamp first and optimize later, if needed.
 Comparator is good old LM311, in very basic configuration.
-Brainbox of the whole setup is PIC18F04Q41 and its 86 lines of C code setup to measure all three values and emit it out through serial port immediately. In its current configuration it produces 31 samples per second.
+Brainbox of the whole setup is [PIC18F04Q41](https://www.microchip.com/en-us/product/pic18f04q41) and its 86 lines of C code (see /firmware) setup to measure all three values and emit it out through serial port immediately. In its current configuration it produces 31 samples per second.
 
 ## Results
-
+Noise is as unimpressive as expected. NSD chart follows:
+![NSD](https://github.com/jaromir-sukuba/single-slope-adc/blob/main/media/NSD_chart.png)As well as chart of 1000 values at 10V range:
+![enter image description here](https://github.com/jaromir-sukuba/single-slope-adc/blob/main/media/noise_record.png)Given this complexity, 150-200uV of peak-to-peak noise at 31SPS can be called tragedy.
 
 # Resume
 
