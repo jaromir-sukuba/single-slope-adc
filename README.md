@@ -16,12 +16,13 @@ Unlike Jim, I had the benefit of 40 years of semiconductor improvements in hand,
 All the components are seated on a PCB similar to [this](https://github.com/macaba/TheManhattanToolkit) manhattan-style PCB set.
 ![PCB](https://github.com/jaromir-sukuba/single-slope-adc/blob/main/media/board.jpg)
 
-Instead of using JFET switches and related level switching, I went with DG411 switches. Input amplifier, integrator and slope amplifier contains OPA145 opamps. Somehow overkill for this application, but I tried to go with good opamp first and optimize later, if needed.
+Instead of using JFET switches and related level switching, I went with DG442 switches. Input amplifier, integrator and slope amplifier contains OPA145 opamps. Somehow overkill for this application, but I tried to go with good opamp first and optimize later, if needed.
 Comparator is good old LM311, in very basic configuration.
 Brainbox of the whole setup is [PIC18F04Q41](https://www.microchip.com/en-us/product/pic18f04q41) and its 86 lines of C code (see /firmware) setup to measure all three values and emit it out through serial port immediately. In its current configuration it produces 31 samples per second.
 
 Hand-drawn schematics follows:
 ![enter image description here](https://github.com/jaromir-sukuba/single-slope-adc/blob/main/schematics/schem.jpg)
+There is a mistake in that schematics. Switches are DG442 rather than DG411.
 
 ## Results
 Noise is as unimpressive as expected. NSD chart follows:
