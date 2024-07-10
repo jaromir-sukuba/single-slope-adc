@@ -5,13 +5,14 @@ This repository contains a few bits and pieces, as leftover from my short experi
 # Single slope ADC
 Typical low- to mid-end ADC DMM architecture is [dual-slope ADC](https://en.wikipedia.org/wiki/Integrating_ADC), integrated in form of ICs like [ICL7106](https://www.analog.com/en/products/icl7106.html) that started their way in Intersil as a ~~stolen~~ unauthorized copy of [Fluke 429100](https://github.com/fivesixzero/keithley-169-display-replacement/blob/main/README.md) ASIC; and now it's copies of unknown legal status are in every two dollar multimeter.
 Its status is a result of good power line frequency suppression, low complexity enabling integration into a monolithic IC, low sensitivity to passive component properties at acceptable linearity and resolution.  
-There are other integrating ADC topologies, and relevant to this repository is single slope ADC. Historically it's been an evolutionary predecessor of dual slope (and more involved integration schemes) and there were many reasons to leave and almost forget this architecture - namely, sensitivity to passive component variation and drift, as well as higher noise compared to dual slope. The sensitivity could be workarounded by using periodic calibration - that is, before measuring the unknown voltage, measuring zero, reference voltage and calculating the unknown voltage by a simple arithmetics. This leaves us the speed/noise ratio even worse than it was to begin with, and the whole ADC implementation greatly benefits from - and keeping the complexity at reasonable level is possible only with - using an MCU. Unlike the dual slope variant that works elegantly with a bunch of counters and simple timing logic.
+There are other integrating ADC topologies, and relevant to this repository is single slope ADC. Historically it's been an evolutionary predecessor of dual slope (and other, more involved integration schemes) and there were many reasons to almost forget this architecture - namely, sensitivity to passive component variation and drift, as well as higher noise compared to dual slope. The sensitivity could be workarounded by using periodic calibration - that is, before measuring the unknown voltage, measuring zero, reference voltage and calculating the unknown voltage by a simple arithmetics. This leaves us the speed/noise ratio even worse than it was to begin with, and the whole ADC implementation greatly benefits from - and keeping the complexity at reasonable level is possible only with - using an MCU or complex programmable logic. Unlike the dual slope variant, working elegantly with a bunch of counters and simple timing logic.
 This approach was chosen by Jim Williams in his [AN-260](https://github.com/jaromir-sukuba/single-slope-adc/blob/main/resources/snoa597b.pdf) appnote. It's a very good read, including the motivation to dig out this cadaver out of the ADC graveyard; some of the hardware tricks to make it work and the results he obtained.  
+
 In a momentary lapse of reason I decided to build this style of ADC.
 
 ## My implementation
 
-Unlike Jim, I had the benefit of 40 years of semiconductor improvements in hand, newer components to choose from, so I went with somehow simpler implementation, but kept the basic principle the same overall.
+Unlike Jim, I had the benefit of 40 years of semiconductor improvements at hand and newer components to choose from, so I went with somehow simpler implementation, but kept the basic principle the same overall.
 
 All the components are seated on a PCB similar to [this](https://github.com/macaba/TheManhattanToolkit) manhattan-style PCB set.
 ![PCB](https://github.com/jaromir-sukuba/single-slope-adc/blob/main/media/board.jpg)
@@ -31,4 +32,4 @@ Noise is as unimpressive as expected. NSD chart follows:
 
 # Resume
 
-Don't do that.
+I tried the single slope ADC so you do not have to.
